@@ -16,6 +16,6 @@ class SplashViewModel @Inject constructor() : BaseViewModel() {
 
     init {
         // TODO @Paul: do what you need before entering the app
-
+        _navigateToHome.value = Event(Unit)
     }
 }
