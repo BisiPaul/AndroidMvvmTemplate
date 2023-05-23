@@ -8,6 +8,7 @@ import com.applakazam.androidmvvmtemplate.common.Resource
 import com.applakazam.androidmvvmtemplate.common.repositories.UsersRepository
 import com.applakazam.androidmvvmtemplate.common.structure.BaseViewModel
 import com.applakazam.androidmvvmtemplate.common.structure.Event
+import com.applakazam.androidmvvmtemplate.data.users.ContactItem
 import com.applakazam.androidmvvmtemplate.data.users.GetUsersResponse
 import com.applakazam.androidmvvmtemplate.data.users.UserModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,9 +28,9 @@ class ContactsViewModel @Inject constructor(
     val requestLiveData: LiveData<Resource<GetUsersResponse>>
         get() = _requestLiveData
 
-    private val _usersLiveData = MutableLiveData<Event<List<UserModel>>>()
-    val usersLiveData: LiveData<Event<List<UserModel>>>
-        get() = _usersLiveData
+    private val _contactsLiveData = MutableLiveData<Event<List<ContactItem>>>()
+    val contactsLiveData: LiveData<Event<List<ContactItem>>>
+        get() = _contactsLiveData
 
     init {
         getUsers()
@@ -50,7 +51,16 @@ class ContactsViewModel @Inject constructor(
             when (response) {
                 is GetUsersResponse.Success -> {
                     val activeUsers = response.usersList.filter { it.status == "active" }
-                    _usersLiveData.value = Event(activeUsers)
+                    val contactItemsList: MutableList<ContactItem> = mutableListOf()
+                    activeUsers.forEach {
+                        contactItemsList.add(
+                            ContactItem(
+                                it.id,
+                                it.name
+                            )
+                        )
+                    }
+                    _contactsLiveData.value = Event(contactItemsList)
                 }
 
                 else -> {
@@ -60,5 +70,9 @@ class ContactsViewModel @Inject constructor(
 
             _requestLiveData.postValue(Resource.success(response))
         }
+    }
+
+    fun onContactClicked() {
+
     }
 }

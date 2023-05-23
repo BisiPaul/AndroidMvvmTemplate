@@ -6,4 +6,8 @@
 
     <!-- HOME -->
     <string name="navigate_to_contacts">To Contacts</string>
+
+    <!-- CONTACTS -->
+    <string name="contacts_title">Contacts</string>
+    <string name="contacts_subtitle">MY CONTACTS</string>
 </resources>

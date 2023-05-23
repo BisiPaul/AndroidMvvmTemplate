@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="global_guideline_start" format="float">0.05</dimen>
+    <dimen name="global_guideline_end" format="float">0.95</dimen>
+    <dimen name="global_guideline_top" format="float">0.02</dimen>
+    <dimen name="global_guideline_bottom" format="float">0.98</dimen>
+</resources>

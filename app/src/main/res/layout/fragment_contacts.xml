@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,6 +14,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleContacts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/contacts_title"
+            app:layout_constraintBottom_toTopOf="@id/subtitleContacts"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEndContacts"
+            app:layout_constraintStart_toStartOf="@id/guidelineStartContacts"
+            app:layout_constraintTop_toTopOf="@id/guidelineTopContacts" />
+
+        <View
+            android:id="@+id/subtitleSpaceLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/secondaryBackgroundColor"
+            app:layout_constraintTop_toTopOf="@id/subtitleContacts"
+            app:layout_constraintBottom_toBottomOf="@id/subtitleContacts"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/subtitleContacts" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/subtitleContacts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/contacts_subtitle"
+            android:background="@color/secondaryBackgroundColor"
+            app:layout_constraintBottom_toTopOf="@id/recyclerViewContacts"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEndContacts"
+            app:layout_constraintStart_toStartOf="@id/guidelineStartContacts"
+            app:layout_constraintTop_toBottomOf="@id/titleContacts" />
+
+        <View
+            android:id="@+id/subtitleSpaceRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/secondaryBackgroundColor"
+            app:layout_constraintTop_toTopOf="@id/subtitleContacts"
+            app:layout_constraintBottom_toBottomOf="@id/subtitleContacts"
+            app:layout_constraintStart_toEndOf="@id/subtitleContacts"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewContacts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/guidelineBottomContacts"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEndContacts"
+            app:layout_constraintStart_toStartOf="@id/guidelineStartContacts"
+            app:layout_constraintTop_toBottomOf="@id/subtitleContacts"
+            tools:listitem="@layout/item_contact" />
+
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progressBarContacts"
             android:layout_width="wrap_content"
@@ -23,6 +75,34 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStartContacts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/global_guideline_start" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEndContacts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/global_guideline_end" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineTopContacts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/global_guideline_top" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineBottomContacts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/global_guideline_bottom" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
