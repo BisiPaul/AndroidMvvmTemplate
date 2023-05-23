@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.applakazam.androidmvvmtemplate.R
 import com.applakazam.androidmvvmtemplate.common.Constants
 import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
+import com.applakazam.androidmvvmtemplate.common.structure.EventObserver
 import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadLocalBitmap
 import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadUrlImage
 import com.applakazam.androidmvvmtemplate.databinding.FragmentContactDetailsBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -28,6 +30,8 @@ class ContactDetailsFragment() : BaseFragment<ContactDetailsViewModel, FragmentC
     private val args: ContactDetailsFragmentArgs by navArgs()
 
     private lateinit var postsAdapter: PostsAdapter
+
+    private var errorSnackbar: Snackbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,5 +72,20 @@ class ContactDetailsFragment() : BaseFragment<ContactDetailsViewModel, FragmentC
         postsLiveData.observe(viewLifecycleOwner) {
             postsAdapter.submitList(it)
         }
+
+        displayBlockingErrorLiveData.observe(viewLifecycleOwner, EventObserver {
+            errorSnackbar = Snackbar.make(binding.root, getString(it), Snackbar.LENGTH_INDEFINITE)
+                .setAction(getString(R.string.retry)) {
+                    viewModel.getPosts()
+                }
+
+            errorSnackbar?.show()
+        })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if(errorSnackbar != null)
+            errorSnackbar?.dismiss()
     }
 }

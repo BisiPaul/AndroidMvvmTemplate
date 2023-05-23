@@ -1,16 +1,24 @@
 package com.applakazam.androidmvvmtemplate.presentation.contactdetails
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.applakazam.androidmvvmtemplate.R
 import com.applakazam.androidmvvmtemplate.common.Constants
 import com.applakazam.androidmvvmtemplate.common.Resource
+import com.applakazam.androidmvvmtemplate.common.error.GeneralException
+import com.applakazam.androidmvvmtemplate.common.error.NetworkException
+import com.applakazam.androidmvvmtemplate.common.error.ResponseTimeoutException
 import com.applakazam.androidmvvmtemplate.common.repositories.UsersRepository
 import com.applakazam.androidmvvmtemplate.common.structure.BaseViewModel
+import com.applakazam.androidmvvmtemplate.common.structure.Event
+import com.applakazam.androidmvvmtemplate.common.structure.isTranslatable
 import com.applakazam.androidmvvmtemplate.data.posts.GetPostsResponse
 import com.applakazam.androidmvvmtemplate.data.posts.PostModel
 import com.applakazam.androidmvvmtemplate.data.users.ContactItem
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
@@ -34,12 +42,33 @@ class ContactDetailsViewModel @Inject constructor(
     val postsLiveData: LiveData<List<PostModel>>
         get() = _postsLiveData
 
+    private val _displayBlockingErrorLiveData = MutableLiveData<Event<@StringRes Int>>()
+    val displayBlockingErrorLiveData: LiveData<Event<Int>>
+        get() = _displayBlockingErrorLiveData
+
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        val exception =
+            if (throwable.isTranslatable()) throwable as Exception else GeneralException()
+        _requestLiveData.value = Resource.error(Constants.GENERAL_ERROR_CODE, exception)
+        when (exception) {
+            is ResponseTimeoutException -> {
+                displayRequestError(R.string.base_error_timeout)
+            }
+            is NetworkException -> {
+                displayRequestError(R.string.base_error_no_internet)
+            }
+            else -> {
+                displayRequestError(R.string.base_error_general_message)
+            }
+        }
+    }
+
     fun handleArgs(args: ContactDetailsFragmentArgs) {
         _contactLiveData.value = args.contactItem
     }
 
     fun getPosts() {
-        viewModelScope.launch {
+        viewModelScope.launch(coroutineExceptionHandler) {
             contactLiveData.value?.id?.let { userId ->
                 _requestLiveData.value = Resource.loading()
                 val request = usersRepository.getPosts(userId)
@@ -55,14 +84,14 @@ class ContactDetailsViewModel @Inject constructor(
                     is GetPostsResponse.Success -> {
                         _postsLiveData.value = response.postsList
                     }
-
-                    else -> {
-                        // TODO @Paul: show something went wrong error
-                    }
                 }
 
                 _requestLiveData.postValue(Resource.success(response))
             }
         }
+    }
+
+    private fun displayRequestError(@StringRes messageRes: Int) {
+        _displayBlockingErrorLiveData.value = Event(messageRes)
     }
 }

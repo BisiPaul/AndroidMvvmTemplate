@@ -11,6 +11,7 @@ import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
 import com.applakazam.androidmvvmtemplate.common.structure.EventObserver
 import com.applakazam.androidmvvmtemplate.common.utils.Extensions.shortToast
 import com.applakazam.androidmvvmtemplate.databinding.FragmentContactsBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -24,6 +25,8 @@ class ContactsFragment : BaseFragment<ContactsViewModel, FragmentContactsBinding
     override val viewModel by viewModels<ContactsViewModel>()
 
     private lateinit var contactsAdapter: ContactsAdapter
+
+    private var errorSnackbar: Snackbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,5 +65,20 @@ class ContactsFragment : BaseFragment<ContactsViewModel, FragmentContactsBinding
                 }
             }
         })
+
+        displayBlockingErrorLiveData.observe(viewLifecycleOwner, EventObserver {
+            errorSnackbar = Snackbar.make(binding.root, getString(it), Snackbar.LENGTH_INDEFINITE)
+                .setAction(getString(R.string.retry)) {
+                    viewModel.getUsers()
+                }
+
+            errorSnackbar?.show()
+        })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (errorSnackbar != null)
+            errorSnackbar?.dismiss()
     }
 }
