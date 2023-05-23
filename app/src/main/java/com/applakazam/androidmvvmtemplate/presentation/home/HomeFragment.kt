@@ -3,6 +3,7 @@ package com.applakazam.androidmvvmtemplate.presentation.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.applakazam.androidmvvmtemplate.R
 import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
 import com.applakazam.androidmvvmtemplate.common.structure.EventObserver
@@ -24,12 +25,14 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     }
 
     private fun setControls() {
-
+        binding.goToContactsButton.setOnClickListener {
+            viewModel.navigateToContacts()
+        }
     }
 
     private fun observe() = with(viewModel) {
-        usersLiveData.observe(viewLifecycleOwner, EventObserver {
-            
-        })
+       navigateToContacts.observe(viewLifecycleOwner, EventObserver {
+           findNavController().navigate(R.id.action_homeFragment_to_contactsFragment)
+       })
     }
 }

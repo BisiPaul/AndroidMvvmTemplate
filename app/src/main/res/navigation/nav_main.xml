@@ -25,6 +25,22 @@
         android:id="@+id/navigation_home"
         android:name="com.applakazam.androidmvvmtemplate.presentation.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_contactsFragment"
+            app:destination="@id/navigation_contacts"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/stationary"
+            app:popEnterAnim="@anim/stationary"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="com.applakazam.androidmvvmtemplate.presentation.contacts.ContactsFragment"
+        android:label="@string/title_contacts"
+        tools:layout="@layout/fragment_contacts" />
 
 </navigation>

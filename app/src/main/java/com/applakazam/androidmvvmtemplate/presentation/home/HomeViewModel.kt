@@ -17,43 +17,12 @@ import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
-    private val usersRepository: UsersRepository
-) : BaseViewModel() {
-    private val _requestLiveData = MutableLiveData<Resource<GetUsersResponse>>()
-    val requestLiveData: LiveData<Resource<GetUsersResponse>>
-        get() = _requestLiveData
+class HomeViewModel @Inject constructor() : BaseViewModel() {
+    private var _navigateToContacts = MutableLiveData<Event<Unit>>()
+    val navigateToContacts: LiveData<Event<Unit>>
+        get() = _navigateToContacts
 
-    private val _usersLiveData = MutableLiveData<Event<List<UserModel>>>()
-    val usersLiveData: LiveData<Event<List<UserModel>>>
-        get() = _usersLiveData
-
-    init {
-        getUsers()
-    }
-
-    private fun getUsers() {
-        viewModelScope.launch {
-            _requestLiveData.value = Resource.loading()
-            val request = usersRepository.getUsers()
-            val response = request.data
-
-            if (response == null) {
-                _requestLiveData.value =
-                    Resource.error(GENERAL_ERROR_CODE, Exception())
-                return@launch
-            }
-
-            when (response) {
-                is GetUsersResponse.Success -> {
-                    _usersLiveData.value = Event(response.usersList)
-                }
-                else -> {
-                    // TODO @Paul: show something went wrong error
-                }
-            }
-
-            _requestLiveData.postValue(Resource.success(response))
-        }
+    fun navigateToContacts() {
+        _navigateToContacts.value = Event(Unit)
     }
 }
