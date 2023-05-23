@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.applakazam.androidmvvmtemplate.R
 import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
+import com.applakazam.androidmvvmtemplate.common.structure.EventObserver
 import com.applakazam.androidmvvmtemplate.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,6 +28,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     }
 
     private fun observe() = with(viewModel) {
-
+        usersLiveData.observe(viewLifecycleOwner, EventObserver {
+            
+        })
     }
 }

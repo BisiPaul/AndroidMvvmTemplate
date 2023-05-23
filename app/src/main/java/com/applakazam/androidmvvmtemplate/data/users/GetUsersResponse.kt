@@ -1,5 +1,6 @@
 package com.applakazam.androidmvvmtemplate.data.users
 
-data class GetUsersResponse(
-    val usersList: List<UserModel>
-)
+sealed class GetUsersResponse(
+) {
+    class Success(val usersList: List<UserModel>) : GetUsersResponse()
+}
