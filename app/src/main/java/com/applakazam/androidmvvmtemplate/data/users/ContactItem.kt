@@ -2,14 +2,16 @@ package com.applakazam.androidmvvmtemplate.data.users
 
 import com.applakazam.androidmvvmtemplate.common.Constants
 import com.applakazam.androidmvvmtemplate.common.utils.IntExtensions.isOdd
+import java.io.Serializable
 
 /**
  *  Created by paulbisioc on 23.05.2023
  */
 data class ContactItem(
     val id: Int,
-    val name: String
-) {
+    val name: String,
+    val email: String
+) : Serializable {
     var pictureUrlOrNameInitials: String
 
     init {

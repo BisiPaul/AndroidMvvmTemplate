@@ -63,10 +63,10 @@
             android:layout_height="wrap_content"
             android:dataLoading="@{viewModel.requestLiveData}"
             android:indeterminate="true"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/recyclerViewContacts"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/recyclerViewContacts" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

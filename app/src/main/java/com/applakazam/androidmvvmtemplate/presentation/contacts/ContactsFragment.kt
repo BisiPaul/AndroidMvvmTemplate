@@ -3,11 +3,13 @@ package com.applakazam.androidmvvmtemplate.presentation.contacts
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.applakazam.androidmvvmtemplate.R
 import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
 import com.applakazam.androidmvvmtemplate.common.structure.EventObserver
+import com.applakazam.androidmvvmtemplate.common.utils.Extensions.shortToast
 import com.applakazam.androidmvvmtemplate.databinding.FragmentContactsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,8 +50,17 @@ class ContactsFragment : BaseFragment<ContactsViewModel, FragmentContactsBinding
     }
 
     private fun observe() = with(viewModel) {
-        contactsLiveData.observe(viewLifecycleOwner, EventObserver {
+        contactsLiveData.observe(viewLifecycleOwner) {
             contactsAdapter.submitList(it)
+        }
+
+        navigateToContactDetails.observe(viewLifecycleOwner, EventObserver {
+            when(it) {
+                null -> { this@ContactsFragment.shortToast("Something went wrong") }
+                else -> {
+                    findNavController().navigate(ContactsFragmentDirections.actionContactsFragmentToContactDetailsFragment(it))
+                }
+            }
         })
     }
 }

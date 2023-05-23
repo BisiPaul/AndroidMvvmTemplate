@@ -2,6 +2,7 @@ package com.applakazam.androidmvvmtemplate.di
 
 import com.applakazam.androidmvvmtemplate.common.Constants
 import com.applakazam.androidmvvmtemplate.common.structure.api.ServiceApi
+import com.applakazam.androidmvvmtemplate.data.posts.GetPostsEntity
 import com.applakazam.androidmvvmtemplate.data.users.GetUsersEntity
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -34,6 +35,7 @@ class ApiModule {
     @Provides
     fun provideMoshi(): Moshi = Moshi.Builder()
         .add(GetUsersEntity.GetUsersAdapter())
+        .add(GetPostsEntity.GetPostsAdapter())
         .addLast(KotlinJsonAdapterFactory())
         .build()
 

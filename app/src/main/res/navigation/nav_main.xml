@@ -41,6 +41,27 @@
         android:id="@+id/navigation_contacts"
         android:name="com.applakazam.androidmvvmtemplate.presentation.contacts.ContactsFragment"
         android:label="@string/title_contacts"
-        tools:layout="@layout/fragment_contacts" />
+        tools:layout="@layout/fragment_contacts">
+        <action
+            android:id="@+id/action_contactsFragment_to_contactDetailsFragment"
+            app:destination="@id/navigation_contact_details"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/stationary"
+            app:popEnterAnim="@anim/stationary"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_contacts"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_contact_details"
+        android:name="com.applakazam.androidmvvmtemplate.presentation.contactdetails.ContactDetailsFragment"
+        android:label="@string/title_contact_details"
+        tools:layout="@layout/fragment_contact_details">
+        <argument
+            android:name="contactItem"
+            app:argType="com.applakazam.androidmvvmtemplate.data.users.ContactItem"
+            app:nullable="false" />
+    </fragment>
 
 </navigation>

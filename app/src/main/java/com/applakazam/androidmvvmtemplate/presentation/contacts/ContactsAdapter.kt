@@ -13,7 +13,7 @@ import com.applakazam.androidmvvmtemplate.databinding.ItemContactBinding
  *  Created by paulbisioc on 23.05.2023
  */
 class ContactsAdapter(
-    private val onItemClicked: () -> Unit
+    private val onItemClicked: (id: Int) -> Unit
 ) : BaseAdapter<ContactItem, ItemContactBinding>(
     diffCallback = ContactsAdapterDiffUtil()
 ) {
@@ -24,7 +24,7 @@ class ContactsAdapter(
     override fun bind(binding: ItemContactBinding, item: ContactItem, position: Int) {
         binding.item = item
         binding.itemContactContainer.setOnClickListener {
-            onItemClicked.invoke()
+            onItemClicked.invoke(item.id)
         }
         if (item.pictureUrlOrNameInitials == Constants.PICSUM_URL) {
             binding.itemContactPicture.loadUrlImage(item.pictureUrlOrNameInitials)

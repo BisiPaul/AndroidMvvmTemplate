@@ -10,7 +10,6 @@ import com.applakazam.androidmvvmtemplate.common.structure.BaseViewModel
 import com.applakazam.androidmvvmtemplate.common.structure.Event
 import com.applakazam.androidmvvmtemplate.data.users.ContactItem
 import com.applakazam.androidmvvmtemplate.data.users.GetUsersResponse
-import com.applakazam.androidmvvmtemplate.data.users.UserModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -28,9 +27,13 @@ class ContactsViewModel @Inject constructor(
     val requestLiveData: LiveData<Resource<GetUsersResponse>>
         get() = _requestLiveData
 
-    private val _contactsLiveData = MutableLiveData<Event<List<ContactItem>>>()
-    val contactsLiveData: LiveData<Event<List<ContactItem>>>
+    private val _contactsLiveData = MutableLiveData<List<ContactItem>>()
+    val contactsLiveData: LiveData<List<ContactItem>>
         get() = _contactsLiveData
+
+    private var _navigateToContactDetails = MutableLiveData<Event<ContactItem?>>()
+    val navigateToContactDetails: LiveData<Event<ContactItem?>>
+        get() = _navigateToContactDetails
 
     init {
         getUsers()
@@ -56,11 +59,12 @@ class ContactsViewModel @Inject constructor(
                         contactItemsList.add(
                             ContactItem(
                                 it.id,
-                                it.name
+                                it.name,
+                                it.email
                             )
                         )
                     }
-                    _contactsLiveData.value = Event(contactItemsList)
+                    _contactsLiveData.value = contactItemsList
                 }
 
                 else -> {
@@ -72,7 +76,7 @@ class ContactsViewModel @Inject constructor(
         }
     }
 
-    fun onContactClicked() {
-
+    fun onContactClicked(id: Int) {
+        _navigateToContactDetails.value = Event(contactsLiveData.value?.firstOrNull { it.id == id})
     }
 }
