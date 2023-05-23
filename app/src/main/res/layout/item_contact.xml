@@ -13,23 +13,28 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/itemContactContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_xMedium">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/itemContactPicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
+            android:layout_width="@dimen/contact_picture_width"
+            android:layout_height="@dimen/contact_picture_height"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/itemContactName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/common_google_signin_btn_text_dark" />
+            app:shapeAppearanceOverlay="@style/circleImageViewStyle"
+            tools:src="@drawable/common_google_signin_btn_text_dark" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/itemContactName"
+            style="@style/Theme.AndroidMvvmTemplate.ContactsText.ItemName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
             android:text="@{item.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/itemContactArrow"

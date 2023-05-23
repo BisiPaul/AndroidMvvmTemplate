@@ -3,6 +3,7 @@ package com.applakazam.androidmvvmtemplate.presentation.contacts
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.applakazam.androidmvvmtemplate.R
 import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
@@ -38,6 +39,7 @@ class ContactsFragment : BaseFragment<ContactsViewModel, FragmentContactsBinding
         binding.recyclerViewContacts.apply {
             adapter = contactsAdapter
             layoutManager = LinearLayoutManager(requireContext())
+            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         }
     }
 

@@ -8,5 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="genericTextColor">#161F28</color>
+    <color name="contactsSubtitleColor">#98A5BE</color>
+    <color name="backgroundColor">#FFFFFF</color>
     <color name="secondaryBackgroundColor">#EFF2F7</color>
 </resources>

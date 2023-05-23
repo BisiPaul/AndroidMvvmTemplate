@@ -2,9 +2,11 @@ package com.applakazam.androidmvvmtemplate.presentation.contacts
 
 import androidx.recyclerview.widget.DiffUtil
 import com.applakazam.androidmvvmtemplate.R
+import com.applakazam.androidmvvmtemplate.common.Constants
 import com.applakazam.androidmvvmtemplate.common.structure.BaseAdapter
+import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadLocalBitmap
+import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadUrlImage
 import com.applakazam.androidmvvmtemplate.data.users.ContactItem
-import com.applakazam.androidmvvmtemplate.data.users.UserModel
 import com.applakazam.androidmvvmtemplate.databinding.ItemContactBinding
 
 /**
@@ -23,6 +25,11 @@ class ContactsAdapter(
         binding.item = item
         binding.itemContactContainer.setOnClickListener {
             onItemClicked.invoke()
+        }
+        if (item.pictureUrlOrNameInitials == Constants.PICSUM_URL) {
+            binding.itemContactPicture.loadUrlImage(item.pictureUrlOrNameInitials)
+        } else {
+            binding.itemContactPicture.loadLocalBitmap(item.pictureUrlOrNameInitials)
         }
     }
 }

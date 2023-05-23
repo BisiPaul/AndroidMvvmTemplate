@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="contact_picture_height">@dimen/_46sdp</dimen>
+    <dimen name="contact_picture_width">@dimen/_46sdp</dimen>
+
+    <dimen name="margin_xSmall">@dimen/_8sdp</dimen>
+    <dimen name="margin_small">@dimen/_12sdp</dimen>
+    <dimen name="margin_medium">@dimen/_16sdp</dimen>
+    <dimen name="margin_xMedium">@dimen/_24sdp</dimen>
+    <dimen name="margin_large">@dimen/_32sdp</dimen>
+    <dimen name="margin_xLarge">@dimen/_48sdp</dimen>
+</resources>

@@ -11,57 +11,49 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/backgroundColor"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/titleContacts"
+            style="@style/Theme.AndroidMvvmTemplate.ContactsText.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/contacts_title"
+            android:paddingStart="@dimen/margin_xMedium"
+            android:paddingEnd="@dimen/margin_xMedium"
+            android:paddingBottom="@dimen/margin_medium"
+            android:paddingTop="@dimen/margin_xLarge"
             app:layout_constraintBottom_toTopOf="@id/subtitleContacts"
-            app:layout_constraintEnd_toEndOf="@id/guidelineEndContacts"
-            app:layout_constraintStart_toStartOf="@id/guidelineStartContacts"
-            app:layout_constraintTop_toTopOf="@id/guidelineTopContacts" />
-
-        <View
-            android:id="@+id/subtitleSpaceLeft"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/secondaryBackgroundColor"
-            app:layout_constraintTop_toTopOf="@id/subtitleContacts"
-            app:layout_constraintBottom_toBottomOf="@id/subtitleContacts"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/subtitleContacts" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/subtitleContacts"
+            style="@style/Theme.AndroidMvvmTemplate.ContactsText.SectionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/contacts_subtitle"
+            android:textColor="@color/contactsSubtitleColor"
             android:background="@color/secondaryBackgroundColor"
+            android:paddingStart="@dimen/margin_xMedium"
+            android:paddingEnd="@dimen/margin_xMedium"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_small"
             app:layout_constraintBottom_toTopOf="@id/recyclerViewContacts"
-            app:layout_constraintEnd_toEndOf="@id/guidelineEndContacts"
-            app:layout_constraintStart_toStartOf="@id/guidelineStartContacts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleContacts" />
-
-        <View
-            android:id="@+id/subtitleSpaceRight"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/secondaryBackgroundColor"
-            app:layout_constraintTop_toTopOf="@id/subtitleContacts"
-            app:layout_constraintBottom_toBottomOf="@id/subtitleContacts"
-            app:layout_constraintStart_toEndOf="@id/subtitleContacts"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewContacts"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/guidelineBottomContacts"
-            app:layout_constraintEnd_toEndOf="@id/guidelineEndContacts"
-            app:layout_constraintStart_toStartOf="@id/guidelineStartContacts"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/subtitleContacts"
             tools:listitem="@layout/item_contact" />
 
@@ -75,34 +67,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineStartContacts"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="@dimen/global_guideline_start" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineEndContacts"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="@dimen/global_guideline_end" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineTopContacts"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="@dimen/global_guideline_top" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineBottomContacts"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="@dimen/global_guideline_bottom" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

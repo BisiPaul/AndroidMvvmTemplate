@@ -10,17 +10,17 @@ data class ContactItem(
     val id: Int,
     val name: String
 ) {
-    var picture: String
+    var pictureUrlOrNameInitials: String
 
     init {
-        picture = when (shouldDisplayPicsumPicture()) {
+        pictureUrlOrNameInitials = when (shouldDisplayPicsumPicture()) {
             true -> { Constants.PICSUM_URL }
             false -> {
                 val initials = name.split(" ")
                     .filter { it.isNotBlank() }
-                    .joinToString { it.first().uppercaseChar().toString() }
+                    .joinToString("") { it.first().uppercaseChar().toString() }
 
-                initials.substring(0,1)
+                initials.substring(0,2)
             }
         }
     }

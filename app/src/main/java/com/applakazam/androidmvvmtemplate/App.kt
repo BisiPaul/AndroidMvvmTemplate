@@ -2,8 +2,8 @@ package com.applakazam.androidmvvmtemplate
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-import org.altbeacon.beacon.BuildConfig
 import timber.log.Timber
+import com.applakazam.androidmvvmtemplate.BuildConfig
 
 @HiltAndroidApp
 class App : Application() {
