@@ -1,9 +1,11 @@
 package com.applakazam.androidmvvmtemplate.common.utils
 
 import android.content.Context
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.applakazam.androidmvvmtemplate.common.structure.AutoClearedValue
+import com.applakazam.androidmvvmtemplate.common.utils.Functions.createBitmapOfInitials
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
@@ -28,8 +30,9 @@ object Extensions {
      */
     fun <T : Any> Fragment.autoCleared() = AutoClearedValue<T>(this)
 
-    fun ShapeableImageView.loadUrlImage(url: String) {
 
+    // ShapeableImageView
+    fun ShapeableImageView.loadUrlImage(url: String) {
         Glide.with(this)
             .load(url)
             .transition(
@@ -41,7 +44,7 @@ object Extensions {
     }
 
     fun ShapeableImageView.loadLocalBitmap(initials: String) {
-        val bitmap = Functions.createBitmapOfInitials(initials)
+        val bitmap = createBitmapOfInitials(initials)
 
         Glide.with(this)
             .load(bitmap)
@@ -51,5 +54,18 @@ object Extensions {
                 )
             )
             .into(this)
+    }
+
+    // View visibility
+    fun View?.visible() {
+        this?.visibility = View.VISIBLE
+    }
+
+    fun View?.invisible() {
+        this?.visibility = View.INVISIBLE
+    }
+
+    fun View?.gone() {
+        this?.visibility = View.GONE
     }
 }

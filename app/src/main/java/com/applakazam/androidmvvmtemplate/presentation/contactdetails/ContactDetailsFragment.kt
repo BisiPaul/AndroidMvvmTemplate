@@ -13,7 +13,6 @@ import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
 import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadLocalBitmap
 import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadUrlImage
 import com.applakazam.androidmvvmtemplate.databinding.FragmentContactDetailsBinding
-import com.applakazam.androidmvvmtemplate.presentation.contacts.ContactsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

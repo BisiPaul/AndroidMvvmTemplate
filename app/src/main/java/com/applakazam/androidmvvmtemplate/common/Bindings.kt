@@ -18,15 +18,7 @@ fun <T> showDataLoading(view: View, resourceWrapper: LiveData<Resource<T>>) {
         View.VISIBLE else View.GONE
 }
 
-@BindingAdapter("android:loadImage")
-fun loadImage(view: ShapeableImageView, urlOrInitials: String) {
-
-    Glide.with(view)
-        .load(urlOrInitials)
-        .transition(
-            DrawableTransitionOptions.withCrossFade(
-                DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
-            )
-        )
-        .into(view)
+@BindingAdapter("goneUnless")
+fun goneUnless(view: View, visible: Boolean) {
+    view.visibility = if (visible) View.VISIBLE else View.GONE
 }

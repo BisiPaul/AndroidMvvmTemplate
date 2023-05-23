@@ -11,7 +11,9 @@
     <!-- CONTACTS -->
     <string name="contacts_title">Contacts</string>
     <string name="contacts_subtitle">MY CONTACTS</string>
+    <string name="contacts_no_contacts">There are no contacts available</string>
 
     <!-- CONTACT DETAILS -->
     <string name="contact_details_title">Contact details</string>
+    <string name="contact_details_no_posts">This user has no posts</string>
 </resources>

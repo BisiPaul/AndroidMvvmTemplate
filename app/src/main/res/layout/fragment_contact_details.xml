@@ -78,26 +78,50 @@
             app:layout_constraintTop_toBottomOf="@id/nameContactDetails"
             tools:text="avram.avramescu@gmail.com" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewPosts"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/postsContainer"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emailContactDetails"
-            tools:listitem="@layout/item_contact_post" />
+            app:layout_constraintTop_toBottomOf="@id/emailContactDetails">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/progressBarContacts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:dataLoading="@{viewModel.requestLiveData}"
-            android:indeterminate="true"
-            app:layout_constraintBottom_toBottomOf="@id/recyclerViewPosts"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/recyclerViewPosts" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPosts"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_contact_post" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressBarContactDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:dataLoading="@{viewModel.requestLiveData}"
+                android:indeterminate="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/noPostsAvailable"
+                style="@style/Theme.AndroidMvvmTemplate.ContactDetails.NoPostsAvailable"
+                goneUnless="@{viewModel.postsLiveData.empty}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/backgroundColor"
+                android:text="@string/contact_details_no_posts"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

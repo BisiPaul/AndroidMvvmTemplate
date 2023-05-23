@@ -10,7 +10,6 @@ import com.applakazam.androidmvvmtemplate.common.structure.BaseViewModel
 import com.applakazam.androidmvvmtemplate.data.posts.GetPostsResponse
 import com.applakazam.androidmvvmtemplate.data.posts.PostModel
 import com.applakazam.androidmvvmtemplate.data.users.ContactItem
-import com.applakazam.androidmvvmtemplate.data.users.GetUsersResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
