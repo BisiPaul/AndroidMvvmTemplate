@@ -76,9 +76,6 @@ dependencies {
     // Timber
     implementation "com.jakewharton.timber:timber:5.0.1"
 
-    // Google Play Auth
-    implementation 'com.google.android.gms:play-services-auth:20.5.0'
-
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
