@@ -1,7 +1,7 @@
 package com.applakazam.androidmvvmtemplate.data.users
 
-import com.applakazam.androidmvvmtemplate.common.Constants
-import com.applakazam.androidmvvmtemplate.common.utils.IntExtensions.isOdd
+import com.applakazam.base.common.Constants
+import com.applakazam.base.common.extensions.IntExtensions.isOdd
 import java.io.Serializable
 
 /**

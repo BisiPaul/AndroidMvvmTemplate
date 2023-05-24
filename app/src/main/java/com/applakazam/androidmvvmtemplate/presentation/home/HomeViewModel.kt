@@ -2,8 +2,8 @@ package com.applakazam.androidmvvmtemplate.presentation.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.applakazam.androidmvvmtemplate.common.structure.BaseViewModel
-import com.applakazam.androidmvvmtemplate.common.structure.Event
+import com.applakazam.base.viewmodel.BaseViewModel
+import com.applakazam.base.common.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

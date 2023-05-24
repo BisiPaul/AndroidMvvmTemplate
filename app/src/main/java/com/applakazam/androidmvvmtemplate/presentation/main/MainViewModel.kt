@@ -1,6 +1,6 @@
 package com.applakazam.androidmvvmtemplate.presentation.main
 
-import com.applakazam.androidmvvmtemplate.common.structure.BaseViewModel
+import com.applakazam.base.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

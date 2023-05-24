@@ -1,19 +1,14 @@
 package com.applakazam.androidmvvmtemplate.presentation.contactdetails
 
-import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.applakazam.androidmvvmtemplate.R
-import com.applakazam.androidmvvmtemplate.common.Constants
-import com.applakazam.androidmvvmtemplate.common.Resource
-import com.applakazam.androidmvvmtemplate.common.error.GeneralException
-import com.applakazam.androidmvvmtemplate.common.error.NetworkException
-import com.applakazam.androidmvvmtemplate.common.error.ResponseTimeoutException
+import com.applakazam.base.common.Constants
+import com.applakazam.base.common.Resource
+import com.applakazam.base.error.GeneralException
 import com.applakazam.androidmvvmtemplate.common.repositories.UsersRepository
-import com.applakazam.androidmvvmtemplate.common.structure.BaseViewModel
-import com.applakazam.androidmvvmtemplate.common.structure.Event
-import com.applakazam.androidmvvmtemplate.common.structure.isTranslatable
+import com.applakazam.base.error.isTranslatable
+import com.applakazam.base.viewmodel.BaseNetworkViewModel
 import com.applakazam.androidmvvmtemplate.data.posts.GetPostsResponse
 import com.applakazam.androidmvvmtemplate.data.posts.PostModel
 import com.applakazam.androidmvvmtemplate.data.users.ContactItem
@@ -29,7 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ContactDetailsViewModel @Inject constructor(
     private val usersRepository: UsersRepository
-) : BaseViewModel() {
+) : BaseNetworkViewModel() {
     private val _requestLiveData = MutableLiveData<Resource<GetPostsResponse>>()
     val requestLiveData: LiveData<Resource<GetPostsResponse>>
         get() = _requestLiveData
@@ -46,17 +41,8 @@ class ContactDetailsViewModel @Inject constructor(
         val exception =
             if (throwable.isTranslatable()) throwable as Exception else GeneralException()
         _requestLiveData.value = Resource.error(Constants.GENERAL_ERROR_CODE, exception)
-        when (exception) {
-            is ResponseTimeoutException -> {
-                displayRequestError(R.string.base_error_timeout)
-            }
-            is NetworkException -> {
-                displayRequestError(R.string.base_error_no_internet)
-            }
-            else -> {
-                displayRequestError(R.string.base_error_general_message)
-            }
-        }
+
+        handleError(exception)
     }
 
     fun handleArgs(args: ContactDetailsFragmentArgs) {

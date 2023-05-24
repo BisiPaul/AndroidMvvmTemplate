@@ -4,22 +4,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.applakazam.androidmvvmtemplate.R
+import com.applakazam.androidmvvmtemplate.databinding.ActivityMainBinding
+import com.applakazam.base.view.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
-    val viewModel by viewModels<MainViewModel>()
+    override val layoutId = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_main)
-
-        observe()
-    }
-
-    private fun observe() = with(viewModel) {
-
-    }
+    override val viewModel by viewModels<MainViewModel>()
 }

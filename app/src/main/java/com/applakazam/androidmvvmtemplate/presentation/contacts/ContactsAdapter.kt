@@ -2,10 +2,10 @@ package com.applakazam.androidmvvmtemplate.presentation.contacts
 
 import androidx.recyclerview.widget.DiffUtil
 import com.applakazam.androidmvvmtemplate.R
-import com.applakazam.androidmvvmtemplate.common.Constants
-import com.applakazam.androidmvvmtemplate.common.structure.BaseAdapter
-import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadLocalBitmap
-import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadUrlImage
+import com.applakazam.base.common.Constants
+import com.applakazam.base.adapter.BaseAdapter
+import com.applakazam.base.common.extensions.Extensions.loadLocalBitmap
+import com.applakazam.base.common.extensions.Extensions.loadUrlImage
 import com.applakazam.androidmvvmtemplate.data.users.ContactItem
 import com.applakazam.androidmvvmtemplate.databinding.ItemContactBinding
 

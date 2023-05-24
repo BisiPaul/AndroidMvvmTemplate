@@ -1,7 +1,7 @@
 package com.applakazam.androidmvvmtemplate.common.repositories
 
-import com.applakazam.androidmvvmtemplate.common.Resource
-import com.applakazam.androidmvvmtemplate.common.ResponseInterpreter
+import com.applakazam.base.common.Resource
+import com.applakazam.base.common.ResponseInterpreter
 import com.applakazam.androidmvvmtemplate.common.structure.api.ServiceApi
 import com.applakazam.androidmvvmtemplate.data.posts.GetPostsResponse
 import com.applakazam.androidmvvmtemplate.data.users.GetUsersResponse

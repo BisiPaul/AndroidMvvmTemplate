@@ -8,11 +8,11 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.applakazam.androidmvvmtemplate.R
-import com.applakazam.androidmvvmtemplate.common.Constants
-import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
-import com.applakazam.androidmvvmtemplate.common.structure.EventObserver
-import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadLocalBitmap
-import com.applakazam.androidmvvmtemplate.common.utils.Extensions.loadUrlImage
+import com.applakazam.base.common.Constants
+import com.applakazam.base.view.BaseFragment
+import com.applakazam.base.common.EventObserver
+import com.applakazam.base.common.extensions.Extensions.loadLocalBitmap
+import com.applakazam.base.common.extensions.Extensions.loadUrlImage
 import com.applakazam.androidmvvmtemplate.databinding.FragmentContactDetailsBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint

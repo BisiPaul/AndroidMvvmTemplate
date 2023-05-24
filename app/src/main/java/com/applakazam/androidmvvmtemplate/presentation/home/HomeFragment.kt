@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.applakazam.androidmvvmtemplate.R
-import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
-import com.applakazam.androidmvvmtemplate.common.structure.EventObserver
+import com.applakazam.base.view.BaseFragment
+import com.applakazam.base.common.EventObserver
 import com.applakazam.androidmvvmtemplate.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 

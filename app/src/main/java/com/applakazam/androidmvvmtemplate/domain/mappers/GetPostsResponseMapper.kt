@@ -1,6 +1,6 @@
 package com.applakazam.androidmvvmtemplate.domain.mappers
 
-import com.applakazam.androidmvvmtemplate.common.EntityMapper
+import com.applakazam.base.common.EntityMapper
 import com.applakazam.androidmvvmtemplate.data.posts.GetPostsEntity
 import com.applakazam.androidmvvmtemplate.data.posts.GetPostsResponse
 import javax.inject.Inject

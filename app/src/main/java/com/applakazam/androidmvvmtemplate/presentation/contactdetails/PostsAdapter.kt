@@ -2,7 +2,7 @@ package com.applakazam.androidmvvmtemplate.presentation.contactdetails
 
 import androidx.recyclerview.widget.DiffUtil
 import com.applakazam.androidmvvmtemplate.R
-import com.applakazam.androidmvvmtemplate.common.structure.BaseAdapter
+import com.applakazam.base.adapter.BaseAdapter
 import com.applakazam.androidmvvmtemplate.data.posts.PostModel
 import com.applakazam.androidmvvmtemplate.databinding.ItemContactPostBinding
 

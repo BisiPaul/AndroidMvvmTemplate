@@ -7,9 +7,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.applakazam.androidmvvmtemplate.R
-import com.applakazam.androidmvvmtemplate.common.structure.BaseFragment
-import com.applakazam.androidmvvmtemplate.common.structure.EventObserver
-import com.applakazam.androidmvvmtemplate.common.utils.Extensions.shortToast
+import com.applakazam.base.view.BaseFragment
+import com.applakazam.base.common.EventObserver
+import com.applakazam.base.common.extensions.Extensions.shortToast
 import com.applakazam.androidmvvmtemplate.databinding.FragmentContactsBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint

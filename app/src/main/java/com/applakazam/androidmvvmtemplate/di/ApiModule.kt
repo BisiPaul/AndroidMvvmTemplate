@@ -1,10 +1,10 @@
 package com.applakazam.androidmvvmtemplate.di
 
 import android.content.Context
-import com.applakazam.androidmvvmtemplate.common.Constants
-import com.applakazam.androidmvvmtemplate.common.network.NetworkConnectionInterceptor
-import com.applakazam.androidmvvmtemplate.common.network.NetworkMonitor
-import com.applakazam.androidmvvmtemplate.common.network.NetworkMonitorImpl
+import com.applakazam.base.common.Constants
+import com.applakazam.base.common.network.NetworkConnectionInterceptor
+import com.applakazam.base.common.network.NetworkMonitor
+import com.applakazam.base.common.network.NetworkMonitorImpl
 import com.applakazam.androidmvvmtemplate.common.structure.api.ServiceApi
 import com.applakazam.androidmvvmtemplate.data.posts.GetPostsEntity
 import com.applakazam.androidmvvmtemplate.data.users.GetUsersEntity
