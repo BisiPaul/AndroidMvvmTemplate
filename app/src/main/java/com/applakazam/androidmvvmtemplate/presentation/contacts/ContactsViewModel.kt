@@ -43,10 +43,6 @@ class ContactsViewModel @Inject constructor(
     val navigateToContactDetails: LiveData<Event<ContactItem?>>
         get() = _navigateToContactDetails
 
-    private val _displayBlockingErrorLiveData = MutableLiveData<Event<@StringRes Int>>()
-    val displayBlockingErrorLiveData: LiveData<Event<Int>>
-        get() = _displayBlockingErrorLiveData
-
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         val exception =
             if (throwable.isTranslatable()) throwable as Exception else GeneralException()
@@ -99,10 +95,6 @@ class ContactsViewModel @Inject constructor(
 
             _requestLiveData.postValue(Resource.success(response))
         }
-    }
-
-    private fun displayRequestError(@StringRes messageRes: Int) {
-        _displayBlockingErrorLiveData.value = Event(messageRes)
     }
 
     fun onContactClicked(id: Int) {

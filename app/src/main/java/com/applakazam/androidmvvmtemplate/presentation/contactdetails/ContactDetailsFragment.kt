@@ -31,8 +31,6 @@ class ContactDetailsFragment() : BaseFragment<ContactDetailsViewModel, FragmentC
 
     private lateinit var postsAdapter: PostsAdapter
 
-    private var errorSnackbar: Snackbar? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -81,11 +79,5 @@ class ContactDetailsFragment() : BaseFragment<ContactDetailsViewModel, FragmentC
 
             errorSnackbar?.show()
         })
-    }
-
-    override fun onPause() {
-        super.onPause()
-        if(errorSnackbar != null)
-            errorSnackbar?.dismiss()
     }
 }

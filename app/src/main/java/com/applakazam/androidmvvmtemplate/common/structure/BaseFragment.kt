@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.library.baseAdapters.BR
 import androidx.navigation.fragment.findNavController
 import com.applakazam.androidmvvmtemplate.common.utils.Extensions.autoCleared
+import com.google.android.material.snackbar.Snackbar
 
 abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment() {
     abstract val layoutId: Int
@@ -19,6 +20,8 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment(
 
     val binding: B
         get() = _binding
+
+    var errorSnackbar: Snackbar? = null
 
     open fun allowBackButton() = true
 
@@ -47,6 +50,12 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment(
 
     open fun createDataBindingComponent(): DataBindingComponent? {
         return null
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (errorSnackbar != null)
+            errorSnackbar?.dismiss()
     }
 }
 
