@@ -1,14 +1,10 @@
 package com.applakazam.androidmvvmtemplate.common.utils
 
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.Network
-import android.net.NetworkCapabilities
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.applakazam.androidmvvmtemplate.common.structure.AutoClearedValue
-import com.applakazam.androidmvvmtemplate.common.utils.Extensions.isConnectedToWifi
 import com.applakazam.androidmvvmtemplate.common.utils.Functions.createBitmapOfInitials
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -71,14 +67,5 @@ object Extensions {
 
     fun View?.gone() {
         this?.visibility = View.GONE
-    }
-
-    // Connectivity
-    fun ConnectivityManager.isConnectedToWifi(network: Network): Boolean {
-        return this.getNetworkCapabilities(network)?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ?: false
-    }
-
-    fun ConnectivityManager.isConnectedToMobileData(network: Network): Boolean {
-        return this.getNetworkCapabilities(network)?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ?: false
     }
 }

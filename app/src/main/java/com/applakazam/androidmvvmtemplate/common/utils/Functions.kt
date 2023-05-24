@@ -1,6 +1,5 @@
 package com.applakazam.androidmvvmtemplate.common.utils
 
-import android.R.attr.text
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color

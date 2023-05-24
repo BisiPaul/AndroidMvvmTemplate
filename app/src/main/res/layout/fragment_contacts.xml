@@ -42,7 +42,7 @@
             android:paddingBottom="@dimen/margin_small"
             android:text="@string/contacts_subtitle"
             android:textColor="@color/contactsSubtitleColor"
-            app:layout_constraintBottom_toTopOf="@id/recyclerViewContacts"
+            app:layout_constraintBottom_toTopOf="@id/contactsContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleContacts" />

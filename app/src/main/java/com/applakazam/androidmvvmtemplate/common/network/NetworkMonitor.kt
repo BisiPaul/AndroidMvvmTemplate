@@ -27,7 +27,6 @@ class NetworkMonitorImpl(context: Context) : NetworkMonitor {
             else -> false
         }
 
-
         return result
     }
 }
