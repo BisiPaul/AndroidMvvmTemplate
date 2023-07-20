@@ -3,22 +3,21 @@ on:
     branches:
       - '**'
 
-
 jobs:
   detekt:
     runs-on: ubuntu-latest
     steps:
-      - name: "checkout"
+      - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: "changed_files"
+      - name: Identify files changed on the Pull Request
         run: |
           git fetch origin main:refs/remotes/origin/main
           CHANGED_FILES=$(git --no-pager diff --name-only origin/main HEAD | tr '\n' ',' | sed 's/\(.*\),/\1 /')
           echo "Changed files: $CHANGED_FILES"
           echo "CHANGED_FILES=$CHANGED_FILES" >> "$GITHUB_ENV"
           
-      - name: "detekt-all"
+      - name: Run detekt
         uses: natiginfo/action-detekt-all@1.23.0
         with:
-          args: --config app/detekt.yml --input "${{ env.CHANGED_FILES }}"
+          args: --config app/detekt.yml --input .
