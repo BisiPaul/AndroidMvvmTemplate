@@ -19,4 +19,4 @@ jobs:
       - name: "detekt-all"
         uses: natiginfo/action-detekt-all@1.23.0
         with:
-          args: --fail-fast --config detekt-config.yml --plugins detekt/detekt-formatting-1.23.0.jar --input '${{ env.CHANGED_FILES }}'
+          args: --config detekt.yml --plugins detekt/detekt-formatting-1.23.0.jar --input '${{ env.CHANGED_FILES }}'
