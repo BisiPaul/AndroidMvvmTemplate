@@ -20,4 +20,4 @@ jobs:
       - name: Run detekt
         uses: natiginfo/action-detekt-all@1.23.0
         with:
-          args: --config app/detekt.yml --input "${{ env.CHANGED_FILES }}"
+          args: --config app/detekt.yml --plugins detekt/detekt-formatting-1.23.0.jar --input "${{ env.CHANGED_FILES }}"
