@@ -221,8 +221,8 @@ empty-blocks:
     active: true
   EmptyInitBlock:
     active: true
-  EmptyKotlinFile:
-    active: true
+  #EmptyKotlinFile:
+  #  active: true
   EmptySecondaryConstructor:
     active: true
   EmptyTryBlock:
