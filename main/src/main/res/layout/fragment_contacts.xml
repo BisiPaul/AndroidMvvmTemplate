@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.applakazam.androidmvvmtemplate.main.presentation.contacts.ContactsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleContacts"
+            style="@style/Theme.AndroidMvvmTemplate.ContactsText.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_xMedium"
+            android:paddingTop="@dimen/margin_xLarge"
+            android:paddingEnd="@dimen/margin_xMedium"
+            android:paddingBottom="@dimen/margin_medium"
+            android:text="@string/contacts_title"
+            app:layout_constraintBottom_toTopOf="@id/subtitleContacts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/subtitleContacts"
+            style="@style/Theme.AndroidMvvmTemplate.ContactsText.SectionTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryBackgroundColor"
+            android:paddingStart="@dimen/margin_xMedium"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_xMedium"
+            android:paddingBottom="@dimen/margin_small"
+            android:text="@string/contacts_subtitle"
+            android:textColor="@color/contactsSubtitleColor"
+            app:layout_constraintBottom_toTopOf="@id/contactsContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleContacts" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contactsContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtitleContacts">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewContacts"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_contact" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressBarContacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:dataLoading="@{viewModel.requestLiveData}"
+                android:indeterminate="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/noPostsAvailable"
+                style="@style/Theme.AndroidMvvmTemplate.ContactsText.NoContactsAvailable"
+                goneUnless="@{viewModel.contactsLiveData.empty}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/backgroundColor"
+                android:text="@string/contacts_no_contacts"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

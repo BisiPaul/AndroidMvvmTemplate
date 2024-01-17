@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@+id/navigation_splash">
+
+    <fragment
+        android:id="@+id/navigation_splash"
+        android:name="com.applakazam.androidmvvmtemplate.main.presentation.splash.SplashFragment"
+        android:label="@string/title_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/navigation_home"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/stationary"
+            app:popEnterAnim="@anim/stationary"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_splash"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.applakazam.androidmvvmtemplate.main.presentation.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_contactsFragment"
+            app:destination="@id/navigation_contacts"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/stationary"
+            app:popEnterAnim="@anim/stationary"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="com.applakazam.androidmvvmtemplate.main.presentation.contacts.ContactsFragment"
+        android:label="@string/title_contacts"
+        tools:layout="@layout/fragment_contacts">
+        <action
+            android:id="@+id/action_contactsFragment_to_contactDetailsFragment"
+            app:destination="@id/navigation_contact_details"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/stationary"
+            app:popEnterAnim="@anim/stationary"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_contacts"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_contact_details"
+        android:name="com.applakazam.androidmvvmtemplate.main.presentation.contactdetails.ContactDetailsFragment"
+        android:label="@string/title_contact_details"
+        tools:layout="@layout/fragment_contact_details">
+        <argument
+            android:name="contactItem"
+            app:argType="com.applakazam.androidmvvmtemplate.main.data.users.ContactItem"
+            app:nullable="false" />
+    </fragment>
+
+</navigation>

@@ -1,6 +1,5 @@
 package com.applakazam.base.error
 
-import android.app.Application
 import androidx.annotation.StringRes
 import com.applakazam.androidmvvmtemplate.base.R
 import retrofit2.HttpException
