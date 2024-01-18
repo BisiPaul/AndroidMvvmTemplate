@@ -13,4 +13,9 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "AndroidMvvmTemplate"
-include ':app'
+include ':main'
+include ':base'
+include ':contacts'
+include ':api'
+include ':extensions'
+include ':navigation'

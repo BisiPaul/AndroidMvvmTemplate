@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@+id/navigation_splash">
+
+    <fragment
+        android:id="@+id/navigation_splash"
+        android:name="com.applakazam.androidmvvmtemplate.main.presentation.splash.SplashFragment"
+        android:label="@string/title_splash"
+        tools:layout="@layout/fragment_splash">
+        <deepLink
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/stationary"
+            app:popEnterAnim="@anim/stationary"
+            app:popExitAnim="@anim/slide_out_right"
+            app:uri="android-app://com.applakazam.androidmvvmtemplate/SplashFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.applakazam.androidmvvmtemplate.main.presentation.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <deepLink app:uri="android-app://com.applakazam.androidmvvmtemplate/HomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="com.applakazam.androidmvvmtemplate.contacts.presentation.ContactsFragment"
+        android:label="@string/contacts_title"
+        tools:layout="@layout/fragment_contacts">
+        <deepLink
+            app:uri="android-app://com.applakazam.androidmvvmtemplate/ContactsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/stationary"
+            app:popEnterAnim="@anim/stationary"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_contacts"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_contact_details"
+        android:name="com.applakazam.androidmvvmtemplate.contacts.presentation.contactdetails.ContactDetailsFragment"
+        android:label="@string/contact_details_title"
+        tools:layout="@layout/fragment_contact_details">
+        <argument
+            android:name="serializedContactItem"
+            app:argType="string"
+            app:nullable="false" />
+        <deepLink app:uri="android-app://com.applakazam.androidmvvmtemplate/ContactDetailsFragment?args={serializedContactItem}" />
+    </fragment>
+
+</navigation>

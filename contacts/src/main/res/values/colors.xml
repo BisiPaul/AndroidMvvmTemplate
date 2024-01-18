@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- CONTACTS -->
+    <color name="genericTextColor">#161F28</color>
+    <color name="contactsSubtitleColor">#98A5BE</color>
+    <color name="secondaryBackgroundColor">#EFF2F7</color>
+    <color name="contactDetailsEmailColor">#717E99</color>
+    <color name="postBackgroundColor">#F7F8FB</color>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.applakazam.androidmvvmtemplate.api.features.contacts.data.posts.PostModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/postBackgroundColor"
+        android:padding="@dimen/margin_xMedium">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemPostTitle"
+            style="@style/Theme.AndroidMvvmTemplate.ContactDetails.PostTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{item.title}"
+            app:layout_constraintBottom_toTopOf="@id/itemPostBody"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Ce mai mananca milenialii?" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemPostBody"
+            style="@style/Theme.AndroidMvvmTemplate.ContactDetails.PostBody"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@{item.body}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itemPostTitle"
+            tools:text="Am dat peste o știre cum că milenialii trebuie să se informeze înainte să..." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

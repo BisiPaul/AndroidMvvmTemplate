@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AndroidMvvmTemplate</string>
+    <string name="title_home">Home</string>
+    <string name="title_splash">Splash</string>
+
+    <!-- HOME -->
+    <string name="navigate_to_contacts">To Contacts</string>
+</resources>
