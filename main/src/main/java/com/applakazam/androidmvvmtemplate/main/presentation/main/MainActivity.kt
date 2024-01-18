@@ -3,7 +3,7 @@ package com.applakazam.androidmvvmtemplate.main.presentation.main
 import androidx.activity.viewModels
 import com.applakazam.androidmvvmtemplate.main.R
 import com.applakazam.androidmvvmtemplate.main.databinding.ActivityMainBinding
-import com.applakazam.base.view.BaseActivity
+import com.applakazam.androidmvvmtemplate.base.view.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

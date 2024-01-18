@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.applakazam.androidmvvmtemplate.contacts.presentation.contactdetails.ContactDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/backContactDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_xSmall"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_small"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/genericTextColor"
+            app:layout_constraintBottom_toBottomOf="@id/titleContactDetails"
+            app:layout_constraintEnd_toStartOf="@id/titleContactDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/titleContactDetails" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleContactDetails"
+            style="@style/Theme.AndroidMvvmTemplate.ContactDetails.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xMedium"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:includeFontPadding="false"
+            android:text="@string/contact_details_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backContactDetails"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pictureContactDetails"
+            android:layout_width="@dimen/contact_picture_width"
+            android:layout_height="@dimen/contact_picture_height"
+            android:layout_marginTop="@dimen/margin_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleContactDetails"
+            app:shapeAppearanceOverlay="@style/circleImageViewStyle"
+            tools:src="@drawable/common_google_signin_btn_text_dark" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/nameContactDetails"
+            style="@style/Theme.AndroidMvvmTemplate.ContactDetails.Name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@{viewModel.contactLiveData.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pictureContactDetails"
+            tools:text="Avram Avramescu" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/emailContactDetails"
+            style="@style/Theme.AndroidMvvmTemplate.ContactDetails.Email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@{viewModel.contactLiveData.email}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameContactDetails"
+            tools:text="avram.avramescu@gmail.com" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/postsContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailContactDetails">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPosts"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_contact_post" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressBarContactDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                dataLoading="@{viewModel.requestLiveData}"
+                android:indeterminate="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/noPostsAvailable"
+                style="@style/Theme.AndroidMvvmTemplate.ContactDetails.NoPostsAvailable"
+                goneUnless="@{viewModel.postsLiveData.empty}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/backgroundColor"
+                android:text="@string/contact_details_no_posts"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

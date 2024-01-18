@@ -10,15 +10,12 @@
         android:name="com.applakazam.androidmvvmtemplate.main.presentation.splash.SplashFragment"
         android:label="@string/title_splash"
         tools:layout="@layout/fragment_splash">
-        <action
-            android:id="@+id/action_splashFragment_to_homeFragment"
-            app:destination="@id/navigation_home"
+        <deepLink
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/stationary"
             app:popEnterAnim="@anim/stationary"
             app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/navigation_splash"
-            app:popUpToInclusive="true" />
+            app:uri="android-app://com.applakazam.androidmvvmtemplate/SplashFragment" />
     </fragment>
 
     <fragment
@@ -26,25 +23,16 @@
         android:name="com.applakazam.androidmvvmtemplate.main.presentation.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_contactsFragment"
-            app:destination="@id/navigation_contacts"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/stationary"
-            app:popEnterAnim="@anim/stationary"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/navigation_home"
-            app:popUpToInclusive="false" />
+        <deepLink app:uri="android-app://com.applakazam.androidmvvmtemplate/HomeFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_contacts"
-        android:name="com.applakazam.androidmvvmtemplate.main.presentation.contacts.ContactsFragment"
-        android:label="@string/title_contacts"
+        android:name="com.applakazam.androidmvvmtemplate.contacts.presentation.ContactsFragment"
+        android:label="@string/contacts_title"
         tools:layout="@layout/fragment_contacts">
-        <action
-            android:id="@+id/action_contactsFragment_to_contactDetailsFragment"
-            app:destination="@id/navigation_contact_details"
+        <deepLink
+            app:uri="android-app://com.applakazam.androidmvvmtemplate/ContactsFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/stationary"
             app:popEnterAnim="@anim/stationary"
@@ -55,13 +43,14 @@
 
     <fragment
         android:id="@+id/navigation_contact_details"
-        android:name="com.applakazam.androidmvvmtemplate.main.presentation.contactdetails.ContactDetailsFragment"
-        android:label="@string/title_contact_details"
+        android:name="com.applakazam.androidmvvmtemplate.contacts.presentation.contactdetails.ContactDetailsFragment"
+        android:label="@string/contact_details_title"
         tools:layout="@layout/fragment_contact_details">
         <argument
-            android:name="contactItem"
-            app:argType="com.applakazam.androidmvvmtemplate.main.data.users.ContactItem"
+            android:name="serializedContactItem"
+            app:argType="string"
             app:nullable="false" />
+        <deepLink app:uri="android-app://com.applakazam.androidmvvmtemplate/ContactDetailsFragment?args={serializedContactItem}" />
     </fragment>
 
 </navigation>

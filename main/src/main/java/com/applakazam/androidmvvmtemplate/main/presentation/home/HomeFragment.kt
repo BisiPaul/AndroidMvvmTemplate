@@ -5,8 +5,10 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.applakazam.androidmvvmtemplate.main.R
-import com.applakazam.base.view.BaseFragment
-import com.applakazam.base.common.EventObserver
+import com.applakazam.androidmvvmtemplate.base.view.BaseFragment
+import com.applakazam.androidmvvmtemplate.base.common.EventObserver
+import com.applakazam.androidmvvmtemplate.navigation.NavDestinationPaths
+import com.applakazam.androidmvvmtemplate.navigation.NavExtensions.deeplinkTo
 import com.applakazam.androidmvvmtemplate.main.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,7 +34,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     private fun observe() = with(viewModel) {
        navigateToContacts.observe(viewLifecycleOwner, EventObserver {
-           findNavController().navigate(R.id.action_homeFragment_to_contactsFragment)
+           findNavController().deeplinkTo(NavDestinationPaths.CONTACTS_FRAGMENT)
        })
     }
 }

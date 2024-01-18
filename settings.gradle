@@ -16,3 +16,6 @@ rootProject.name = "AndroidMvvmTemplate"
 include ':main'
 include ':base'
 include ':contacts'
+include ':api'
+include ':extensions'
+include ':navigation'

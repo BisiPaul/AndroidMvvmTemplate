@@ -1,7 +1,7 @@
 package com.applakazam.androidmvvmtemplate.main.di
 
-import com.applakazam.androidmvvmtemplate.main.common.repositories.UsersRepository
-import com.applakazam.androidmvvmtemplate.main.common.repositories.UsersRepositoryImpl
+import com.applakazam.androidmvvmtemplate.api.features.contacts.repositories.UsersRepository
+import com.applakazam.androidmvvmtemplate.api.features.contacts.repositories.UsersRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

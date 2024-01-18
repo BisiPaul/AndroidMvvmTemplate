@@ -1,13 +1,13 @@
 package com.applakazam.androidmvvmtemplate.main.di
 
 import android.content.Context
-import com.applakazam.base.common.Constants
-import com.applakazam.base.common.network.NetworkConnectionInterceptor
-import com.applakazam.base.common.network.NetworkMonitor
-import com.applakazam.base.common.network.NetworkMonitorImpl
-import com.applakazam.androidmvvmtemplate.main.common.structure.api.ServiceApi
-import com.applakazam.androidmvvmtemplate.main.data.posts.GetPostsEntity
-import com.applakazam.androidmvvmtemplate.main.data.users.GetUsersEntity
+import com.applakazam.androidmvvmtemplate.api.features.contacts.ContactsApiConstants
+import com.applakazam.androidmvvmtemplate.api.features.contacts.ContactsServiceApi
+import com.applakazam.androidmvvmtemplate.api.features.contacts.data.posts.GetPostsEntity
+import com.applakazam.androidmvvmtemplate.api.features.contacts.data.users.GetUsersEntity
+import com.applakazam.androidmvvmtemplate.api.network.NetworkConnectionInterceptor
+import com.applakazam.androidmvvmtemplate.api.network.NetworkMonitor
+import com.applakazam.androidmvvmtemplate.api.network.NetworkMonitorImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -64,13 +64,13 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideServiceApi(
+    fun provideContactsServiceApi(
         okHttpClient: OkHttpClient,
         moshi: Moshi
-    ): ServiceApi = Retrofit.Builder()
-        .baseUrl(Constants.BASE_URL)
+    ): ContactsServiceApi = Retrofit.Builder()
+        .baseUrl(ContactsApiConstants.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
-        .create(ServiceApi::class.java)
+        .create(ContactsServiceApi::class.java)
 }
