@@ -60,4 +60,6 @@ object NavExtensions {
         val decodedBytes = Base64.decode(this, Base64.DEFAULT)
         return String(decodedBytes, Charsets.UTF_8)
     }
+
+    private fun test() {}
 }
