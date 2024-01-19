@@ -26,4 +26,4 @@ jobs:
 
       - name: Run ktlint to check for unused imports
         run: |
-          ./ktlint --reporter=plain --experimental --relative ${GITHUB_WORKSPACE} | grep "unused import" || true
+          ./ktlint --reporter=plain --experimental --relative ${GITHUB_WORKSPACE} || true
