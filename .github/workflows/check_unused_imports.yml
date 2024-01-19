@@ -1,0 +1,29 @@
+name: Check Unused Imports
+
+on:
+  pull_request:
+    paths:
+      - '**/*.kt'  # Adjust file patterns as needed
+
+jobs:
+  check_unused_imports:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Download ktlint
+        run: |
+          curl -sSLO https://github.com/pinterest/ktlint/releases/download/1.1.1/ktlint
+          chmod +x ktlint
+
+      - name: Run ktlint to check for unused imports
+        run: |
+          ./ktlint --reporter=plain --experimental --relative ${GITHUB_WORKSPACE} | grep "unused import" || true
