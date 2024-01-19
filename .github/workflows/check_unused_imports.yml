@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - '**/*.kt'  # Adjust file patterns as needed
+  workflow_dispatch:
 
 jobs:
   check_unused_imports:
