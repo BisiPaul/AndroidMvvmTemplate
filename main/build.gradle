@@ -50,43 +50,44 @@ dependencies {
     implementation project(':contacts')
     implementation project(':navigation')
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+
+    // Material
+    implementation "com.google.android.material:material:$materialVersion"
+
+    // Navigation Components
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$junitExtensionsVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
     // Dependency Injection
     // https://developer.android.com/training/dependency-injection/hilt-android
-    implementation 'com.google.dagger:hilt-android:2.46'
-    kapt 'com.google.dagger:hilt-android-compiler:2.46'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+    implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltVersion"
 
     // Live Data
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
-
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10'
-
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
 
     // Timber
-    implementation "com.jakewharton.timber:timber:5.0.1"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
 
     // Moshi
-    implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.13.0"
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
     // Logging Interceptor
-    implementation "com.squareup.okhttp3:okhttp:3.14.9"
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
 }
