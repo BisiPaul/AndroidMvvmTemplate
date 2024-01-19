@@ -26,4 +26,4 @@ jobs:
           chmod +x ktlint
 
       - name: Run ktlint to check for unused imports
-        run: ktlint --reporter=plain --experimental --relative ${GITHUB_WORKSPACE} || true
+        run: ./ktlint --reporter=plain --experimental --relative ${GITHUB_WORKSPACE} || true
