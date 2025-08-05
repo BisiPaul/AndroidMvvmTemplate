@@ -1,17 +1,18 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
     id 'kotlin-android'
     id 'dagger.hilt.android.plugin'
 }
 
 android {
     namespace 'com.applakazam.androidmvvmtemplate.base'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         minSdk 24
-        targetSdk 34
+        targetSdk 36
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"

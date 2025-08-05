@@ -3,17 +3,18 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
     id 'androidx.navigation.safeargs'
 }
 
 android {
     namespace 'com.applakazam.androidmvvmtemplate.main'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.applakazam.androidmvvmtemplate"
         minSdk 24
-        targetSdk 34
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
@@ -82,7 +83,7 @@ dependencies {
 
     // Moshi
     implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    ksp "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
     // Logging Interceptor
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
