@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace 'com.applakazam.androidmvvmtemplate.api'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         minSdk 23
