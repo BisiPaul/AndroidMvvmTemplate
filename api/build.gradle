@@ -26,12 +26,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
 
-    kotlinOptions {
-        jvmTarget = '17'
+    kotlin {
+        jvmToolchain(21)
     }
 }
 
@@ -55,7 +55,7 @@ dependencies {
     // Dependency Injection
     // https://developer.android.com/training/dependency-injection/hilt-android
     implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
+    ksp "com.google.dagger:hilt-compiler:$daggerHiltVersion"
     kapt "androidx.hilt:hilt-compiler:$hiltVersion"
 
     // Retrofit
