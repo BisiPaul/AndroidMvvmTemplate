@@ -18,7 +18,7 @@ open class BaseNetworkViewModel @Inject constructor() : BaseViewModel() {
     @Inject
     lateinit var errorTranslator: BaseErrorTranslator
 
-    private val _displayBlockingErrorLiveData = MutableLiveData<Event<@StringRes Int>>()
+    private val _displayBlockingErrorLiveData = MutableLiveData<Event<Int>>()
     val displayBlockingErrorLiveData: LiveData<Event<Int>>
         get() = _displayBlockingErrorLiveData
 
@@ -31,7 +31,7 @@ open class BaseNetworkViewModel @Inject constructor() : BaseViewModel() {
         return errorTranslator.translateError(exception)
     }
 
-    private fun displayRequestError(@StringRes messageRes: Int) {
+    private fun displayRequestError(messageRes: Int) {
         _displayBlockingErrorLiveData.value = Event(messageRes)
     }
 }
